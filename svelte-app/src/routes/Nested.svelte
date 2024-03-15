@@ -1,0 +1,1 @@
+<p>This is a another paragraph from nested component.</p>

@@ -4,6 +4,7 @@
     let name = 'Svelte';
     let src = '/image.gif';
     let alt = 'Svelte is loading';
+    let string = 'This string contains some <strong>HTML</strong>.'
 </script>
 
 <style>
@@ -18,3 +19,4 @@
 <img {src} {alt} />
 <p>Trying styling paragraph.</p>
 <Nested />
+<p>{@html string}</p>
