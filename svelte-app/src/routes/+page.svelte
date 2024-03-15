@@ -5,7 +5,10 @@
     let src = '/image.gif';
     let alt = 'Svelte is loading';
     let string = 'This string contains some <strong>HTML</strong>.';
+    //Reactive assignemnt
     let counter = 0;
+    //Reactive declarations
+    $: doubled = counter * 2;
 
     function increament()
     {
@@ -39,4 +42,4 @@
 <p>Trying styling paragraph.</p>
 <Nested />
 <p>{@html string}</p>
-<button on:click={increament}>Click me {counter}</button>
+<button on:click={increament}>Click me {counter} and double is {doubled}</button>
