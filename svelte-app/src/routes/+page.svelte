@@ -9,6 +9,12 @@
     let counter = 0;
     //Reactive declarations
     $: doubled = counter * 2;
+    
+    //Reactive declarative statement
+    $: if (counter >= 10)
+    {
+        alert('Exceed');
+    }
 
     function increament()
     {
