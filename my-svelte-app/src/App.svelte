@@ -1,8 +1,8 @@
 <script>
 	import Modal from './Modal.svelte';
 
-	let firstName = "Kinjal";
-	let lastName = "Thaker";
+	let firstName = "Adam";
+	let lastName = "Oxford";
 	let showModal = false;
 
 	//reactive value - it will react on the value on which it is depend on.
