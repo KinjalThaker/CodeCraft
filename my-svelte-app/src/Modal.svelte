@@ -8,6 +8,7 @@
     <div class="backdrop" class:promo={isPromo} on:click|self> <!-- Event forwarding -->
         <div class="modal">
             <div>{message}</div>
+            <slot></slot>
         </div>
     </div>
 {/if}

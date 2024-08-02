@@ -1,5 +1,6 @@
 <script>
 	import Modal from './Modal.svelte';
+	import AddPersonForm from './AddPersonForm.svelte';
 
 	let firstName = "Adam";
 	let lastName = "Oxford";
@@ -22,9 +23,9 @@
 	}
 
 	let people = [
-		{name: 'Kinjal', age: 10, id: 1},
-		{name: 'Jini', age: 20, id: 2},
-		{name: 'Mini', age: 30, id: 3},
+		{name: 'Kinjal', age: 10, beltColor:'red', id: 1},
+		{name: 'Jini', age: 20, beltColor:'purple', id: 2},
+		{name: 'Mini', age: 30, beltColor:'pink', id: 3},
 	];
 
 	const handleDelete = (id) => {
@@ -34,9 +35,17 @@
 	const toggleModal = () => {
 		showModal = !showModal;
 	}
+
+	const addPerson = (e) => {
+		let person = e.detail;
+		people = [person, ...people];
+		showModal = false;
+	}
 </script>
 
-<Modal message="Sign up for offers." isPromo={false} {showModal} on:click={toggleModal} />
+<Modal message="Sign up for offers." isPromo={false} {showModal} on:click={toggleModal}>
+	<AddPersonForm on:addPerson={addPerson} />
+</Modal>
 
 <main>
 	<div style="border:solid 1px lightgray;" class="p-2">
