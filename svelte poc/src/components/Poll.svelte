@@ -1,14 +1,33 @@
 <script>
-    import { createEventDispatcher } from "svelte";
+    import PollStore from "../stores/PollStore";
+    
     export let poll;
     $: totalVotePerPoll = poll.vote1 + poll.vote2;
     $: percent1 = Math.floor(100 / totalVotePerPoll * poll.vote1);
     $: percent2 = Math.floor(100 / totalVotePerPoll * poll.vote2);
 
-    let dispatch = createEventDispatcher();
-
     const handleVote = (option, id) => {
-        dispatch('vote', {option, id});
+        PollStore.update(polls => {
+            let copyPolls = [...polls];
+            let updatedPolls = copyPolls.find(poll => poll.id === id);
+
+            if (option === 1) {
+                updatedPolls.vote1++;
+            }
+
+            if (option === 2) {
+                updatedPolls.vote2++;
+            }
+
+            return copyPolls;
+        });
+        
+    }
+
+    const deletePoll = (id) => {
+        PollStore.update(polls => {
+            return polls.filter(poll => poll.id != id);
+        });
     }
 </script>
 
@@ -22,6 +41,9 @@
     <div class="answer" on:click={() => handleVote(2, poll.id)}>
         <div class="percent percent2" style="width: {percent2}%;"></div>
         <div>{poll.answer2} ({poll.vote2})</div>
+    </div>
+    <div style="text-align: right;">
+        <button on:click={() => deletePoll(poll.id)}>Delete</button>
     </div>
 </div>
 
@@ -69,5 +91,16 @@
         background: rgba(59, 126, 12, 0.661);
         position: absolute;
         border-left: solid 5px rgba(59, 126, 12, 0.661);;
+    }
+
+    button {
+        border: solid 1px #d4d1d1;
+        padding: 5px 10px;
+        background: #ddd;
+    }
+
+    button:hover {
+        background: gray;
+        color: white;
     }
 </style>
