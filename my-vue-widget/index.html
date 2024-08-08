@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        body{
+          background: #eee;
+          max-width: 960px;
+          margin: 20px auto;
+        }
+        p, h3, ul{
+          margin: 0;
+          padding: 0;
+        }
+        li{
+          list-style-type: none;
+          background: #fff;
+          margin: 20px auto;
+          padding: 10px 20px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        li.fav{
+          background: #0c0c82;
+          color: white;
+        }
+      </style>
+</head>
+<body>
+    <div id="app">
+        <div v-if="isShow">
+            <h1>{{ title }}</h1>
+            <div>
+                <a v-bind:href="url" target="_blank">Search vue on Google</a>
+            </div>
+            <ul>
+                <li v-for="book in books" @click="toggleFav(book)" :class="{fav: book.isFav}">{{ book.title }} {{ book.author }}  </li>
+            </ul>
+        </div>
+        <div>
+            <span v-on:click="toggle" v-if="isShow">Hide</span>
+            <span @click="toggle" v-else>Show</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
