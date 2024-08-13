@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-app
+  labels:
+    app: laravel-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: laravel-app
+  template:
+    metadata:
+      labels:
+        app: laravel-app
+    spec:
+      containers:
+      - name: laravel-app
+        image: laravel-image:latest
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 8082
+        env:
+        - name: APP_ENV
+          value: local # Adjust as needed (e.g., 'local' for local development)
+        - name: APP_DEBUG
+          value: "true"
+        - name: APP_KEY
+          value: base64:+zGeH2uDrcxt5IOpt+8yNffcUrNYN1ZrkcVs+PFTtG8=
+        #- name: DB_CONNECTION
+        #  value: "mysql"  # Adjust based on your database
+        #- name: DB_HOST
+        #  value: 127.0.0.1 # The name of your MySQL service in Kubernetes
+        #- name: DB_PORT
+        #  value: "3306"  # Default MySQL port
+        #- name: DB_DATABASE
+        #  value: laravel
+        #- name: DB_USERNAME
+        #  value: root
+        #- name: DB_PASSWORD
+        #  value:
