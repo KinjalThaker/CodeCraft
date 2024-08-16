@@ -22,8 +22,8 @@
     </form>
     <div>
         <p>{{ id }}</p>
-        <p>Title: {{ title }}</p>
-        <p>Details: {{ details }}</p>
+        <p>Title: {{ job.title }}</p>
+        <p>Details: {{ job.details }}</p>
     </div>
     <!--<Modal :showModal="showModal" @closeModal="closeModal" />-->
   </div>

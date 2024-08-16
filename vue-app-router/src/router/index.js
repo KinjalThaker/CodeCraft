@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import JobsView from '../views/Jobs/JobsView.vue'
 import JobDetailsView from '../views/Jobs/JobDetailsView.vue'
 import AddView from '../views/Jobs/AddView.vue'
+import BlogsView from '../views/Blogs/BlogsView.vue'
+import BlogDetailsView from '../views/Blogs/BlogDetailsView.vue'
 
 const routes = [
   {
@@ -38,6 +40,17 @@ const routes = [
     path: '/jobs/:id',
     name: 'UpdateJob',
     component: AddView,
+    props: true
+  },
+  {
+    path: '/blogs',
+    name: 'Blogs',
+    component: BlogsView
+  },
+  {
+    path: '/blogs/:id',
+    name: 'BlogDetails',
+    component: BlogDetailsView,
     props: true
   }
 ]
