@@ -214,9 +214,11 @@ const Layout = ({ children }) => {
       }
     >
     <main class="flex flex-1 flex-col pb-2 lg:min-w-0 lg:pl-0 lg:pr-2 lg:pt-2">
-        <div>
-            { children }
+      <div>
+        <div class="mx-auto max-w-6xl">
+          { children }
         </div>
+      </div>
     </main> 
     </SidebarLayout>
     );
